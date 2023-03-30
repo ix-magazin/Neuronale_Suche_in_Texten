@@ -32,18 +32,21 @@ def dpr_loss(
     """
 
     # Folgendes ergibt einen Tensor der Form (#Anfragen, #Dokumente) mit den paarweisen Skalarprodukten.
+    # Das heißt, für jede Anfrage q im Minibatch wird der Score zu allen Dokumenten im Minibatch berechnet.
     scores = sim(query_vectors,
                  document_vectors)
 
-    # Es folgt die Loss-Berechnung in zwei Schritten
+    # Es folgt die Loss-Berechnung in zwei Schritten. Dies ist mathematisch äquivalent zu der Loss-Formulierug
+    # aus dem Paper und wie sie im iX-Artikel beschrieben steht.
 
     # 1. Dieser Aufruf führt den Softmax und dessen Logarithmierung in einem Schritt aus.
     #    Beide Operationen separat zu berechnen wäre numerisch instabil, daher gibt es in PyTorch eine
     #    entsprechende optimierte Funktion.
-    log_probabilities = F.log_softmax(scores,
-                                      dim=1)
+    log_probabilities = F.log_softmax(scores, dim=1)
 
-    # 2. Dieser Aufruf gleicht die log_probabilities mit den korrekten Indizes ab und berechnet somit den loss
+    # 2. Dieser Aufruf gleicht die log_probabilities mit den Soll-Indizes ab. Das heißt: Für jede Anfrage q soll
+    #    das in den Trainingsdaten zugeordnete Ergebnis-Dokument p den höchsten Score verglichen mit allen anderen
+    #    Dokumenten haben.
     loss = F.nll_loss(
         log_probabilities,
         positive_idx_per_query,
@@ -52,6 +55,8 @@ def dpr_loss(
 
     # Übrigens: man könnte den Loss auch äquivalent mit folgendem 1-Zeiler berechnen:
     # loss = F.cross_entropy(scores, positive_idx_per_query)
-    # Damit wird klar, dass DPR eigentlich fast das Gleiche macht wie CLIP (nur das Ähnlichkeitsmaß unterscheidet sich)
+    # Damit wird klar, dass DPR eigentlich fast das Gleiche macht wie CLIP (nur das Ähnlichkeitsmaß unterscheidet sich
+    # und einer der Encoder encodiert bei CLIP Bilder statt Text).
+    # Dem geneigten Leser bleibt überlassen, sich selbst von der Korrektheit dieser Aussage zu überzeugen.
 
     return loss
