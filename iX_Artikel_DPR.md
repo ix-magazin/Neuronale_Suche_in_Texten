@@ -37,8 +37,7 @@ Die Termhäufigkeit $\mathrm{tf}$ sagt aus, wie oft ein Term $t$ in einem Dokume
 Dokuments (welche gleich der Summe der Häufigkeiten aller bekannten Terme $t$ im Dokument $d$ ist). Sie ist wie folgt
 definiert:
 
-$\mathrm{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} =
-\frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
+$\text{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} = \frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
 
 Nun gilt es, zusätzlich abzubilden, wie *spezifisch* ein Term ist, das heißt, wie gut er sich als Indikator für die
 Unterscheidung von Dokumenten eignet. Dabei wird die Annahme getroffen, dass ein Term dann besonders spezifisch ist,
