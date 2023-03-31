@@ -37,7 +37,7 @@ Die Termhäufigkeit $\mathrm{tf}$ sagt aus, wie oft ein Term $t$ in einem Dokume
 Dokuments (welche gleich der Summe der Häufigkeiten aller bekannten Terme $t$ im Dokument $d$ ist). Sie ist wie folgt
 definiert:
 
-$\mathrm{tf}(t, d) = \frac{\text{Häufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Wörter in Dokument d}} =
+$\mathrm{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} =
 \frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
 
 Nun gilt es, zusätzlich abzubilden, wie *spezifisch* ein Term ist, das heißt, wie gut er sich als Indikator für die
@@ -56,7 +56,7 @@ besonders niedrige Werte liefert, wenn der Term sehr geläufig ist, also in sehr
 beispielsweise die Stoppwörter "die", "aber", "und"). Dies erreicht man, indem man den Logarithmus des Inversen des oben
 genannten Verhältnis betrachtet. Die Funktion $\mathrm{idf}(t, D)$ ist somit definiert als:
 
-$\mathrm{idf}(t, D) = \log \frac{N}{|\{d \in D: t \in d\}|$
+$\mathrm{idf}(t, D) = \log \frac{N}{|d \in D: t \in d|}$
 
 Das zusammengesetzte TF•IDF Maß ist dann das Produkt $\mathrm{tf}(t, d) \cdot \mathrm{idf}(t, D)$. Es hängt von einem
 Term $t$, einem Dokument $d$ und einer Dokumentsammlung $D$ ab, mit $t \in d$ und $d \in D$. Das Maß hat dann hohe
@@ -76,7 +76,7 @@ Um die Ähnlichkeit zweier Dokumente $d_1$ und $d_2$ festzustellen, kann nun ein
 Dokumentvektoren $v_{d_1}$ und $v_{d_2}$ berechnet werden. Hierzu ist zunächst ein Ähnlichkeitsmaß notwendig. Üblich im
 Information Retrieval ist an der Stelle die Kosinusähnlichkeit, die folgendermaßen definiert ist:
 
-$\text{cosine_sim}(q, p) = \frac{q \cdot p}{\max(\lVert q \rVert_2 \cdot \lVert p \rVert_2, \epsilon)}$
+$\mathrm{cosine_sim}(q, p) = \frac{q \cdot p}{\max(\lVert q {\rVert}_2 \cdot \lVert p {\rVert}_2, \epsilon)}$
 
 Wenn man nun die Annahme trifft, dass eine hohe Übereinstimmung der TF•IDF Statistik einer Suchanfrage mit der TF•IDF
 Statistik eines Dokuments ein geeigneter Indikator für eine semantische Übereinstimmung ist, dann kann man damit eine *
@@ -125,7 +125,7 @@ um einen dünnbesetzten Vektor (*sparse vector*). Bei DPR ist jede Dimension der
 meistens *ungleich null* (so, wie die x/y/z-Koordinaten der Objekte in einem 3D-Raum auch meistens nicht 0 sind, sondern
 irgendwo im Raum verteilt liegen). Dieser Unterschied erklärt auch das Wort *dense* (engl.: "dicht") im Namen des
 Verfahrens "Dense Passage Retrieval". Ein weiterer Unterschied von DPR verglichen mit Systemen basierend auf TF•IDF
-liegt im verwendeten Ähnlichkeitsmaß, anahdn von dem die *k-nearest-neighbor*-Suche durchgeführt wird. TF•IDF beruht
+liegt im verwendeten Ähnlichkeitsmaß, anhand von dem die *k-nearest-neighbor*-Suche durchgeführt wird. TF•IDF beruht
 üblicherweise auf der oben beschriebenen Kosinusähnlichkeit. Von den Autoren des DPR-Papers wurde jedoch gezeigt, dass
 sich für DPR das bloße Skalarprodukt als Ähnlichkeitsmaß besser eignet. Das Skalarprodukt bleibt übrig, wenn man in der
 oben beschriebenen Formulierung der Kosinusähnlichkeit die Normalisierung streicht. Dies ergibt ein Ähnlichkeitsmaß,
