@@ -3,6 +3,7 @@ from torch import Tensor as T
 import torch.nn.functional as F
 
 
+@torch.jit.script
 def sim(q: T, p: T) -> T:
     """
     Berechnet die paarweisen Ähnlichkeiten zwischen einem Tensor aus Anfragevektoren q und einem Tensor aus
@@ -17,6 +18,7 @@ def sim(q: T, p: T) -> T:
     return similarity_scores
 
 
+@torch.jit.script
 def dpr_loss(
         query_vectors: T,
         document_vectors: T,
