@@ -176,8 +176,7 @@ stochastisch.*
 
 Zur Modellierung einer Wahrscheinlichkeitsverteilung über mehrere Klassen eignet sich die *Softmax-Funktion*. Dabei wird
 ein Vektor $z$ aus $|K|$ reellen Zahlen, die jeweils einen unnormalisierten Score $z _ i$ für die Wahrscheinlichkeit einer
-Klasse $k _ i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die Wahrscheinlichkeit $\sigma(z) _ 
-i$, dass die Klasse $k _ i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
+Klasse $k _ i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die Wahrscheinlichkeit $\sigma(z) _ i$, dass die Klasse $k _ i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
 Softmax-Formulierung wie folgt:
 
 <!-- $\sigma(z) _ i = \frac{e^{z _ i}}{\sum _ {j=1}^{\left|K\right|} e^{z _ j}}$ --> <img style="transform: translateY(0.1em); background: white; height: 50px;" src="svg\u20xjHJjAM.png">
