@@ -180,17 +180,17 @@ Klasse $k _ i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umge
 i$, dass die Klasse $k _ i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
 Softmax-Formulierung wie folgt:
 
-$\sigma(z) _ i = \frac{e^{z _ i}}{\sum _ {j=1}^{\left|K\right|} e^{z _ j}}$
+<!-- $\sigma(z) _ i = \frac{e^{z _ i}}{\sum _ {j=1}^{\left|K\right|} e^{z _ j}}$ --> <img style="transform: translateY(0.1em); background: white;" src="svg\u20xjHJjAM.svg">
 
 Betrachtet man die Ausgabe der oben definierten Ähnlichkeitsfunktion $\text{sim}$ als den unnormalisierten Score $z _ i$,
 so kann man diese in die Softmax-Formulierung einsetzen:
 
-$\sigma(z) _ i = \frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
+<!-- $\sigma(z) _ i = \frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$ --> <img style="transform: translateY(0.1em); background: white;" src="svg\WrSYgkwGCR.svg">
 
 Die übliche Methode, eine Wahrscheinlichkeit zu maximieren, ist, die *Negative Log Likelihood (NLL)* zu minimieren. Und
 damit gelangt man zur Formulierung des Loss $L$:
 
-$L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
+<!-- $L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$ --> <img style="transform: translateY(0.1em); background: white;" src="svg\tPImr85tkf.svg">
 
 Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q _ i, p{ _ i}^+,)$ alle anderen Dokumente aus dem vorliegenden
 Datensatz als Negativbeispiele $p _ {i,j}^-$ zu verwenden. Dies ist aber mit Hinblick auf den Rechen- und Speicheraufwand
