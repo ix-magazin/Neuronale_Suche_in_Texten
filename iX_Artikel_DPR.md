@@ -167,8 +167,7 @@ zu finden.
 
 Dieses Ranking-Problem kann durch eine raffinierte Formulierung als Multi-Klassifikationsproblem betrachtet werden.
 Gegeben seien der Anfragevektor $q _ i$ mit dem Soll-Dokumentenvektor $p _ i^+$ und eine Menge an irrelevanten
-Dokumentenvektoren $p _ {i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P _ i = \{p _ i^+, p _ {i, 1}^-, ...,
-p _ {i, n}^- \}$. Nun kann eine Wahrscheinlichkeit formuliert werden, die in etwa folgendes aussagt: Wie wahrscheinlich
+Dokumentenvektoren $p _ {i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P _ i = \{p _ i^+, p _ {i, 1}^-, ..., p _ {i, n}^- \}$. Nun kann eine Wahrscheinlichkeit formuliert werden, die in etwa folgendes aussagt: Wie wahrscheinlich
 ist es, dass ein Klassifikator in Anbetracht einer Anfrage $q _ i$ den korrekten Soll-Dokumentenvektor $p _ i^+$ aus der
 Menge aller Dokumente $P _ i$ auswählt? Für jeden Dokumentenvektor $p$ gibt es dann eine entsprechende Klasse. *Wichtig:
 Hier dient die Modellierung als Wahrscheinlichkeit nur als Vehikel, um einen geeigneten Loss zu formulieren und das
@@ -191,14 +190,13 @@ $\sigma(z) _ i = \frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ 
 Die übliche Methode, eine Wahrscheinlichkeit zu maximieren, ist, die *Negative Log Likelihood (NLL)* zu minimieren. Und
 damit gelangt man zur Formulierung des Loss $L$:
 
-$L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(
-q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
+$L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
 
 Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q _ i, p{ _ i}^+,)$ alle anderen Dokumente aus dem vorliegenden
 Datensatz als Negativbeispiele $p _ {i,j}^-$ zu verwenden. Dies ist aber mit Hinblick auf den Rechen- und Speicheraufwand
 nicht machbar. Daher verwendet man in der Praxis einen Trick, bei dem nur ein Bruchteil der Dokumente zur selben Zeit
-geladen und zur Berechnung des Loss herangezogen wird. Dabei werden gleich mehrere Anfrage/Dokument-Paare $(q _ i, p{ _ 
-i}^+)$ aus dem Gesamtdatensatz ausgewählt. Diese formen dann einen sogenannten *Minibatch*. Nun werden für jede Anfrage
+geladen und zur Berechnung des Loss herangezogen wird. Dabei werden gleich mehrere Anfrage/Dokument-Paare
+$(q _ i, p{ _ i}^+)$ aus dem Gesamtdatensatz ausgewählt. Diese formen dann einen sogenannten *Minibatch*. Nun werden für jede Anfrage
 $q _ i$ aus diesem Minibatch alle anderen Dokumente $p{ _ j}^+$ als Negativdokumente für $q _ i$ betrachtet. Diese bezeichnet
 man als *in-batch negatives*. Der Liste an Negativdokumenten können zusätzlich noch sogenannte *hard negatives*
 hinzugefügt werden. Damit sind zusätzliche Negativdokumente gemeint, die den eigentlichen Soll-Dokumenten pro Anfrage
