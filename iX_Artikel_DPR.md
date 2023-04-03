@@ -167,8 +167,7 @@ zu finden.
 
 Dieses Ranking-Problem kann durch eine raffinierte Formulierung als Multi-Klassifikationsproblem betrachtet werden.
 Gegeben seien der Anfragevektor $q_i$ mit dem Soll-Dokumentenvektor $p_i^+$ und eine Menge an irrelevanten
-Dokumentenvektoren $p_{i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P_i = \
-{p_i^+, p_{i, 1}^-, \dots,
+Dokumentenvektoren $p_{i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P_i = \{p_i^+, p_{i, 1}^-, ...,
 p_{i, n}^- \}$. Nun kann eine Wahrscheinlichkeit formuliert werden, die in etwa folgendes aussagt: Wie wahrscheinlich
 ist es, dass ein Klassifikator in Anbetracht einer Anfrage $q_i$ den korrekten Soll-Dokumentenvektor $p_i^+$ aus der
 Menge aller Dokumente $P_i$ auswählt? Für jeden Dokumentenvektor $p$ gibt es dann eine entsprechende Klasse. *Wichtig:
@@ -178,25 +177,22 @@ stochastisch.*
 
 Zur Modellierung einer Wahrscheinlichkeitsverteilung über mehrere Klassen eignet sich die *Softmax-Funktion*. Dabei wird
 ein Vektor $z$ aus $|K|$ reellen Zahlen, die jeweils einen unnormalisierten Score $z_i$ für die Wahrscheinlichkeit einer
-Klasse $k_i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die 
-Wahrscheinlichkeit $\sigma (z)_
+Klasse $k_i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die Wahrscheinlichkeit $\sigma(z)_
 i$, dass die Klasse $k_i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
 Softmax-Formulierung wie folgt:
 
-$\sigma (z)_i = \frac{e^{z_i}}{\sum_{j=1}^{\left|K\right|} e^{z_j}}$
+$\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{\left|K\right|} e^{z_j}}$
 
 Betrachtet man die Ausgabe der oben definierten Ähnlichkeitsfunktion $\text{sim}$ als den unnormalisierten Score $z_i$,
 so kann man diese in die Softmax-Formulierung einsetzen:
 
-$\sigma (z)_i = \frac{e^{\text{sim}(q_i,p_{i}^+)}}{e^{\text{sim}(q_i,p_{i}^+)} + \sum_{j=1}^n{e^
-{\text{sim}(q_i,p_
+$\sigma(z)_i = \frac{e^{\text{sim}(q_i,p_{i}^+)}}{e^{\text{sim}(q_i,p_{i}^+)} + \sum_{j=1}^n{e^{\text{sim}(q_i,p_
 {i,j}^-)}}}$
 
 Die übliche Methode, eine Wahrscheinlichkeit zu maximieren, ist, die *Negative Log Likelihood (NLL)* zu minimieren. Und
 damit gelangt man zur Formulierung des Loss $L$:
 
-$L(q_i, p{_i}^+, p_{i, 1}^-, ..., p_{i, n}^-)=-\log(\sigma (z)_i)=-\log\frac{e^{\text{sim}(q_i,p_
-{i}^+)}}{e^{\text{sim}(
+$L(q_i, p{_i}^+, p_{i, 1}^-, ..., p_{i, n}^-)=-\log(\sigma(z)_i)=-\log\frac{e^{\text{sim}(q_i,p_{i}^+)}}{e^{\text{sim}(
 q_i,p_{i}^+)} + \sum_{j=1}^n{e^{\text{sim}(q_i,p_{i,j}^-)}}}$
 
 Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q_i, p{_i}^+,)$ alle anderen Dokumente aus dem vorliegenden
