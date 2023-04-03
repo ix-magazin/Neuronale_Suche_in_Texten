@@ -191,7 +191,7 @@ damit gelangt man zur Formulierung des Loss $L$:
 
 <!-- $L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$ --> <img style="transform: translateY(0.1em); background: white; height: 50px;" src="svg\tPImr85tkf.png">
 
-Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q _ i, p{ _ i}^+,)$ alle anderen Dokumente aus dem vorliegenden
+Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q _ i, p{ _ i}^+)$ alle anderen Dokumente aus dem vorliegenden
 Datensatz als Negativbeispiele $p _ {i,j}^-$ zu verwenden. Dies ist aber mit Hinblick auf den Rechen- und Speicheraufwand
 nicht machbar. Daher verwendet man in der Praxis einen Trick, bei dem nur ein Bruchteil der Dokumente zur selben Zeit
 geladen und zur Berechnung des Loss herangezogen wird. Dabei werden gleich mehrere Anfrage/Dokument-Paare
