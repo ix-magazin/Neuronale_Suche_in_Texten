@@ -37,7 +37,7 @@ Die Termhäufigkeit $\mathrm{tf}$ sagt aus, wie oft ein Term $t$ in einem Dokume
 Dokuments (welche gleich der Summe der Häufigkeiten aller bekannten Terme $t$ im Dokument $d$ ist). Sie ist wie folgt
 definiert:
 
-$\text{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} = \frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
+$\text{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} = \frac{f _ {t,d}}{{\sum _ {t' \in d}{f _ {t',d}}}}$
 
 Nun gilt es, zusätzlich abzubilden, wie *spezifisch* ein Term ist, das heißt, wie gut er sich als Indikator für die
 Unterscheidung von Dokumenten eignet. Dabei wird die Annahme getroffen, dass ein Term dann besonders spezifisch ist,
@@ -63,19 +63,19 @@ Werte, wenn $t$ sowohl oft in $d$ vorkommt, aber selten in der gesamten Dokument
 aber auch oft in der gesamten Dokumentsammlung $D$, dann ist der Wert trotzdem niedrig (weil der Logarithmus in der
 $\mathrm{idf}$ Funktion das Produkt in diesem Fall stark gegen 0 zieht).
 
-Um zwei Dokumente $d_1$ und $d_2$ miteinander vergleichen zu können, wird die Statistik der TF•IDF Werte über alle Terme
-$t$ aus dem gesamten Vokabular $V$ herangezogen. Dabei wird für jedes Dokument $d$ ein Dokumentvektor $v_d$ erstellt,
+Um zwei Dokumente $d _ 1$ und $d _ 2$ miteinander vergleichen zu können, wird die Statistik der TF•IDF Werte über alle Terme
+$t$ aus dem gesamten Vokabular $V$ herangezogen. Dabei wird für jedes Dokument $d$ ein Dokumentvektor $v _ d$ erstellt,
 der sich aus den einzelnen TF•IDF Werten zusammensetzt. Somit repräsentiert jede Dimension $i$ in einem solchen
-Dokumentvektor $v_d$ die Statistik über ein bestimmtes Wort (einen Term) $t_i$ aus dem Vokabular $V$ im vorliegenden
+Dokumentvektor $v _ d$ die Statistik über ein bestimmtes Wort (einen Term) $t _ i$ aus dem Vokabular $V$ im vorliegenden
 Dokument $d$:
 
-$v_{d, i} = \mathrm{tf}(t_i, d) \cdot \mathrm{idf}(t_i, D)$
+$v _ {d, i} = \mathrm{tf}(t _ i, d) \cdot \mathrm{idf}(t _ i, D)$
 
-Um die Ähnlichkeit zweier Dokumente $d_1$ und $d_2$ festzustellen, kann nun eine Ähnlichkeit zwischen ihren beiden
-Dokumentvektoren $v_{d_1}$ und $v_{d_2}$ berechnet werden. Hierzu ist zunächst ein Ähnlichkeitsmaß notwendig. Üblich im
+Um die Ähnlichkeit zweier Dokumente $d _ 1$ und $d _ 2$ festzustellen, kann nun eine Ähnlichkeit zwischen ihren beiden
+Dokumentvektoren $v _ {d _ 1}$ und $v _ {d _ 2}$ berechnet werden. Hierzu ist zunächst ein Ähnlichkeitsmaß notwendig. Üblich im
 Information Retrieval ist an der Stelle die Kosinusähnlichkeit, die folgendermaßen definiert ist:
 
-$\mathrm{cosine_sim}(q, p) = \frac{q \cdot p}{\max(\lVert q {\rVert}_2 \cdot \lVert p {\rVert}_2, \epsilon)}$
+$\mathrm{cosine _ sim}(q, p) = \frac{q \cdot p}{\max(\lVert q {\rVert} _ 2 \cdot \lVert p {\rVert} _ 2, \epsilon)}$
 
 Wenn man nun die Annahme trifft, dass eine hohe Übereinstimmung der TF•IDF Statistik einer Suchanfrage mit der TF•IDF
 Statistik eines Dokuments ein geeigneter Indikator für eine semantische Übereinstimmung ist, dann kann man damit eine *
@@ -83,8 +83,8 @@ k-nearest-neighbor*-Suche bauen. Wie stark oder schwach diese Annahme in der Pra
 Intranetsuche seiner Organisation beispielsweise nach "Urlaubsantrag" sucht, man aber keinen einzigen Treffer erzielt,
 weil in den relevanten Dokumenten nur von "Antrag auf Urlaub" die Rede ist. Das liegt daran, dass diese Modellierung
 keine Repräsentierung von Sprache an sich beinhaltet und über kein Weltmodell verfügt, sondern ausschließlich die
-Häufigkeiten bestimmter Buchstabenfolgen berücksichtigt. Somit besteht zwischen dem Wort $t_1 = \text{"Urlaubsantrag"}$
-und $t_2 = \text{"Urlaub"}$ zwar ein semantischer Zusammenhang, in der TF•IDF Modellierung wird diese Semantik aber in
+Häufigkeiten bestimmter Buchstabenfolgen berücksichtigt. Somit besteht zwischen dem Wort $t _ 1 = \text{"Urlaubsantrag"}$
+und $t _ 2 = \text{"Urlaub"}$ zwar ein semantischer Zusammenhang, in der TF•IDF Modellierung wird diese Semantik aber in
 keiner Weise berücksichtigt. Somit hat "Urlaubsantrag" nichts mit "Urlaub" zu tun. Und der Plural "Urlaubsanträge" hat
 keinen Zusammenhang dem Singular "Urlaubsantrag".
 
@@ -157,50 +157,49 @@ Klasse `DPRQuestionEncoder`, und ein Encoder für die Dokumente, analog eingebet
 
 ## Loss-Funktion bei Dense Passage Retrieval
 
-Wenn man eine Anzahl $Q$ Anfragevektoren $q_i$ der Länge $D$ zusammenfasst, erhält man einen Tensor $q$ des Rangs 2 und
-der Form $(Q, D)$. Analog können $P$ Dokumentenvektoren $p_j$ zu einem Tensor $p$ des Rangs 2 mit der Form $(P, D)$
-zusammengefasst werden. Dann kann man die paarweisen Ähnlichkeiten $\text{sim}(q_i, p_j)$ der Anfragen und Dokumente
+Wenn man eine Anzahl $Q$ Anfragevektoren $q _ i$ der Länge $D$ zusammenfasst, erhält man einen Tensor $q$ des Rangs 2 und
+der Form $(Q, D)$. Analog können $P$ Dokumentenvektoren $p _ j$ zu einem Tensor $p$ des Rangs 2 mit der Form $(P, D)$
+zusammengefasst werden. Dann kann man die paarweisen Ähnlichkeiten $\text{sim}(q _ i, p _ j)$ der Anfragen und Dokumente
 mithilfe einer Matrixmultiplikation von $q$ und $p$ berechnen. Der resultierende Tensor hat dann ebenfalls den Rang 2
 und die Form $(Q, P)$. Die
 Funktion [`sim` im begleitenden Git-Repository in `dprexplained/loss.py`](https://github.com/schreon/DPR-Explained/blob/main/dprexplained/loss.py#L7)
 zu finden.
 
 Dieses Ranking-Problem kann durch eine raffinierte Formulierung als Multi-Klassifikationsproblem betrachtet werden.
-Gegeben seien der Anfragevektor $q_i$ mit dem Soll-Dokumentenvektor $p_i^+$ und eine Menge an irrelevanten
-Dokumentenvektoren $p_{i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P_i = \{p_i^+, p_{i, 1}^-, ...,
-p_{i, n}^- \}$. Nun kann eine Wahrscheinlichkeit formuliert werden, die in etwa folgendes aussagt: Wie wahrscheinlich
-ist es, dass ein Klassifikator in Anbetracht einer Anfrage $q_i$ den korrekten Soll-Dokumentenvektor $p_i^+$ aus der
-Menge aller Dokumente $P_i$ auswählt? Für jeden Dokumentenvektor $p$ gibt es dann eine entsprechende Klasse. *Wichtig:
+Gegeben seien der Anfragevektor $q _ i$ mit dem Soll-Dokumentenvektor $p _ i^+$ und eine Menge an irrelevanten
+Dokumentenvektoren $p _ {i,j}^-$. Die Menge aller gegebenen Dokumentenvektoren ist dann $P _ i = \{p _ i^+, p _ {i, 1}^-, ...,
+p _ {i, n}^- \}$. Nun kann eine Wahrscheinlichkeit formuliert werden, die in etwa folgendes aussagt: Wie wahrscheinlich
+ist es, dass ein Klassifikator in Anbetracht einer Anfrage $q _ i$ den korrekten Soll-Dokumentenvektor $p _ i^+$ aus der
+Menge aller Dokumente $P _ i$ auswählt? Für jeden Dokumentenvektor $p$ gibt es dann eine entsprechende Klasse. *Wichtig:
 Hier dient die Modellierung als Wahrscheinlichkeit nur als Vehikel, um einen geeigneten Loss zu formulieren und das
 Modell zu trainieren. Im Produktionsbetrieb bzw. zur Inferenzzeit ist das Verfahren deterministisch und nicht
 stochastisch.*
 
 Zur Modellierung einer Wahrscheinlichkeitsverteilung über mehrere Klassen eignet sich die *Softmax-Funktion*. Dabei wird
-ein Vektor $z$ aus $|K|$ reellen Zahlen, die jeweils einen unnormalisierten Score $z_i$ für die Wahrscheinlichkeit einer
-Klasse $k_i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die Wahrscheinlichkeit $\sigma(z)_
-i$, dass die Klasse $k_i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
+ein Vektor $z$ aus $|K|$ reellen Zahlen, die jeweils einen unnormalisierten Score $z _ i$ für die Wahrscheinlichkeit einer
+Klasse $k _ i \in K$ repräsentieren, in eine Wahrscheinlichkeitsverteilung umgewandelt. Die Wahrscheinlichkeit $\sigma(z) _ 
+i$, dass die Klasse $k _ i$ aus der Menge möglicher Klassen $K$ ausgewählt wird, berechnet sich gemäß der
 Softmax-Formulierung wie folgt:
 
-$\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{\left|K\right|} e^{z_j}}$
+$\sigma(z) _ i = \frac{e^{z _ i}}{\sum _ {j=1}^{\left|K\right|} e^{z _ j}}$
 
-Betrachtet man die Ausgabe der oben definierten Ähnlichkeitsfunktion $\text{sim}$ als den unnormalisierten Score $z_i$,
+Betrachtet man die Ausgabe der oben definierten Ähnlichkeitsfunktion $\text{sim}$ als den unnormalisierten Score $z _ i$,
 so kann man diese in die Softmax-Formulierung einsetzen:
 
-$\sigma(z)_i = \frac{e^{\text{sim}(q_i,p_{i}^+)}}{e^{\text{sim}(q_i,p_{i}^+)} + \sum_{j=1}^n{e^{\text{sim}(q_i,p_
-{i,j}^-)}}}$
+$\sigma(z) _ i = \frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
 
 Die übliche Methode, eine Wahrscheinlichkeit zu maximieren, ist, die *Negative Log Likelihood (NLL)* zu minimieren. Und
 damit gelangt man zur Formulierung des Loss $L$:
 
-$L(q_i, p{_i}^+, p_{i, 1}^-, ..., p_{i, n}^-)=-\log(\sigma(z)_i)=-\log\frac{e^{\text{sim}(q_i,p_{i}^+)}}{e^{\text{sim}(
-q_i,p_{i}^+)} + \sum_{j=1}^n{e^{\text{sim}(q_i,p_{i,j}^-)}}}$
+$L(q _ i, p{ _ i}^+, p _ {i, 1}^-, ..., p _ {i, n}^-)=-\log(\sigma(z) _ i)=-\log\frac{e^{\text{sim}(q _ i,p _ {i}^+)}}{e^{\text{sim}(
+q _ i,p _ {i}^+)} + \sum _ {j=1}^n{e^{\text{sim}(q _ i,p _ {i,j}^-)}}}$
 
-Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q_i, p{_i}^+,)$ alle anderen Dokumente aus dem vorliegenden
-Datensatz als Negativbeispiele $p_{i,j}^-$ zu verwenden. Dies ist aber mit Hinblick auf den Rechen- und Speicheraufwand
+Am besten wäre es, für jedes Anfrage/Dokument-Paar $(q _ i, p{ _ i}^+,)$ alle anderen Dokumente aus dem vorliegenden
+Datensatz als Negativbeispiele $p _ {i,j}^-$ zu verwenden. Dies ist aber mit Hinblick auf den Rechen- und Speicheraufwand
 nicht machbar. Daher verwendet man in der Praxis einen Trick, bei dem nur ein Bruchteil der Dokumente zur selben Zeit
-geladen und zur Berechnung des Loss herangezogen wird. Dabei werden gleich mehrere Anfrage/Dokument-Paare $(q_i, p{_
+geladen und zur Berechnung des Loss herangezogen wird. Dabei werden gleich mehrere Anfrage/Dokument-Paare $(q _ i, p{ _ 
 i}^+)$ aus dem Gesamtdatensatz ausgewählt. Diese formen dann einen sogenannten *Minibatch*. Nun werden für jede Anfrage
-$q_i$ aus diesem Minibatch alle anderen Dokumente $p{_j}^+$ als Negativdokumente für $q_i$ betrachtet. Diese bezeichnet
+$q _ i$ aus diesem Minibatch alle anderen Dokumente $p{ _ j}^+$ als Negativdokumente für $q _ i$ betrachtet. Diese bezeichnet
 man als *in-batch negatives*. Der Liste an Negativdokumenten können zusätzlich noch sogenannte *hard negatives*
 hinzugefügt werden. Damit sind zusätzliche Negativdokumente gemeint, die den eigentlichen Soll-Dokumenten pro Anfrage
 sehr ähnlich sind und sich somit schwer unterscheiden lassen. Im Rahmen dieses Artikels und der
