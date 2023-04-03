@@ -17,4 +17,4 @@ Der lokale Dateipfad zu diesem Repository muss zur PYTHONPATH-Umgebungsvariable 
 
 ## Schritt für Schritt
 
-Nun können die Scripte nacheinander angepasst und ausgeführt werden. 
+Nun können die Scripte nacheinander angepasst und ausgeführt werden.
