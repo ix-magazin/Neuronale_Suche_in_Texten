@@ -37,7 +37,8 @@ Die Termhäufigkeit $\mathrm{tf}$ sagt aus, wie oft ein Term $t$ in einem Dokume
 Dokuments (welche gleich der Summe der Häufigkeiten aller bekannten Terme $t$ im Dokument $d$ ist). Sie ist wie folgt
 definiert:
 
-$\text{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} = \frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
+$\text{tf}(t, d) = \frac{\text{Haeufigkeit des Terms t in Dokument d}}{\text{Anzahl aller Woerter in Dokument d}} =
+\frac{f_{t,d}}{{\sum_{t' \in d}{f_{t',d}}}}$
 
 Nun gilt es, zusätzlich abzubilden, wie *spezifisch* ein Term ist, das heißt, wie gut er sich als Indikator für die
 Unterscheidung von Dokumenten eignet. Dabei wird die Annahme getroffen, dass ein Term dann besonders spezifisch ist,
@@ -257,10 +258,19 @@ Weise lernt ein bereits vortrainiertes Sprachmodell, mit domänenspezifischen Be
 
 ## Zusammenfassung und Schluss
 
-In diesem Artikel wurde der Unterschied zwischen TF•IDF Retrieval und Dense Passage Retrieval erklärt. Es wurde eine
-Herleitung einer geeigneten Loss-Funktion geschildert. Weitere praktische Tricks wurden erläutert und mit der
-Implementierung einer DPR-Demo in einem [Begleit-Repository](https://github.com/schreon/DPR-Explained) verknüpft. Anhand
-von dem Source Code im Repository kann, wer möchte, DPR auf den eigenen Daten trainieren und ausprobieren. Wer keine
-eigenen Daten zur Verfügung hat, kann sich auf das kommende iX Sonderheft freuen: Im darin enthaltenen Folge-Artikel
-wird gezeigt, wie man mit `haystack` eine produktionstaugliche Extractive Question Answering und DPR Pipeline erstellen
-kann. Dabei kann dann ein Datensatz der Landeshauptstadt München heruntergeladen und verwendet werden. Viel Spaß!
+Mit DPR lassen sich die Schwächen von Suchsystemen, die lediglich auf die Häufigkeit von Schlüsslworten aufbauen,
+überwinden. Durch ein exsitierendes Sprachmodell als Ausgangspunkt wird es möglich, den Sinn einer Suchanfrage zu
+erfassen, um ihn beim Ranking der Suchergebnisse zu berücksichtigen. Als Ausgangspunkt eignen sich allgemeine
+DPR-Modelle, die zuvor anhand von vortrainierten Encoder-Sprachmodellen und großen Frage/Antwort-Datensätzen erstellt
+wurden. Mithilfe von ICT können diese dann auf die eigene Domäne verfeinert werden. Wenn man den Aufwand nicht scheut,
+zusätzliche Trainingsdaten zu annotieren, kann beispielsweise
+das [haystack annotation tool](https://docs.haystack.deepset.ai/docs/annotation)
+verwenden, um einen eigenen, domänenspezifischen Frage & Antwort Datensatz zu erstellen. Der ist dann gleich für zwei
+Aspekte nützlich: Erstens kann man damit das DPR-Modell nochmals stärker auf die eigene Domäne spezialisieren, und
+zweitens kann man damit dann ein zusätzliches Extractive Question Answering Modell trainieren, das einem die
+Antwort-Stellen in den Ergebnisdokumenten markiert. Anhand von dem Source Code
+im [Begleit-Repository](https://github.com/schreon/DPR-Explained) kann, wer möchte, ein DPR-Suchmodell auf den eigenen
+Daten trainieren und ausprobieren. Wer keine eigenen Daten zur Verfügung hat, kann sich auf das kommende iX Sonderheft
+freuen: Im darin enthaltenen Folge-Artikel wird gezeigt, wie man mit `haystack`
+eine produktionstaugliche Extractive Question Answering und DPR Pipeline erstellen kann. Dabei kann dann ein Datensatz
+der Landeshauptstadt München heruntergeladen und verwendet werden. Viel Spaß!
