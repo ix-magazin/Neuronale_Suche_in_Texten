@@ -8,7 +8,7 @@ Git-Hub-Verzeichnis zum [Wissens-Artikel](https://www.heise.de/select/ix/2023/6/
 - Um ein allgemeines neuronales DPR-Modell auf das eigene Fachvokabular zu spezialisieren, erstellt etwa das Haystack  Annotation Tool domänenspezifische Frage-und-Antwort-Datensätze zum Trainieren des Modells.
 ___
 
-*Anforderungen*: Um selbst zu trainieren, wird mindestens eine CUDA-fähige Grafikkarte benötigt.
+**Anforderungen**: Um selbst zu trainieren, wird mindestens eine CUDA-fähige Grafikkarte benötigt.
 
 ## Vorbereitung der Arbeitsumgebung:
 
