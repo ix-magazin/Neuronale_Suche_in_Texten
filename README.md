@@ -1,5 +1,5 @@
 # Neuronale_Suche_in_Texten
-Git-Hub-Verzeichnis zum [Wissens-Artikel](https://www.heise.de/select/ix/2023/6/2308009005309487505) von Clemens Gutknecht, Leon Lukas und Leon Marius Schröder, erschienen auf [Heise+](heise.de) und im [iX-Magazin 06/2023](https://www.heise.de/select/ix/2023/6).
+Git-Hub-Verzeichnis zum [Wissens-Artikel](https://www.heise.de/select/ix/2023/6/2308009005309487505) von Leon Marius Schröder, Clemens Gutknecht und Leon Lukas, erschienen auf [Heise+](heise.de) und im [iX-Magazin 06/2023](https://www.heise.de/select/ix/2023/6).
 
 # iX-tract
 - Systeme zum Durchsuchen von Dokumentsammlungen basieren häufig auf dem statistischen Maß TF-IDF, mit dem sich jedoch keine semantischen Verbindungen in Dokumenten finden lassen. Die Lösung: neuronale Suchmaschinen.
